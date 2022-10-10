@@ -2,7 +2,7 @@ class User {
   final String firstName;
   final int? age;
 
-  User({
+  const User({
     required this.firstName,
     this.age,
   });

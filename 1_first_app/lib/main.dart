@@ -5,11 +5,11 @@ void main() {
   runApp(Container(
     color: Colors.blue,
   ));
-  final User toto = User(
+  const User toto = User(
     firstName: 'toto',
     age: 12,
   );
-  final User richard = User(
+  const User richard = User(
     firstName: 'Richard',
   );
   print('${toto.firstName} ${toto.age}');
