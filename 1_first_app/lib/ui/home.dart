@@ -18,11 +18,21 @@ class Home extends StatelessWidget {
           ),
         ),
         bottomNavigationBar: BottomNavigationBar(
+          onTap: _onTap,
           items: const [
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
             BottomNavigationBarItem(
-                icon: Icon(Icons.settings), label: 'Settings'),
+              icon: Icon(Icons.home),
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.settings),
+              label: 'Settings',
+            ),
           ],
         ));
+  }
+
+  void _onTap(int index) {
+    print('Tapped on item $index');
   }
 }
