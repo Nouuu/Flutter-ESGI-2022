@@ -1,7 +1,22 @@
 import 'package:flutter/material.dart';
 
-class Home extends StatelessWidget {
+import 'home_screen/home_screen.dart';
+import 'settings_screen/settings_screen.dart';
+
+class Home extends StatefulWidget {
   const Home({super.key});
+
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  final screens = [
+    const HomeScreen(),
+    const SettingsScreen(),
+  ];
+
+  int _currentScreenIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -11,14 +26,10 @@ class Home extends StatelessWidget {
           centerTitle: true,
           title: const Text('My First App'),
         ),
-        body: Center(
-          child: Text(
-            'Hello World',
-            style: Theme.of(context).textTheme.headline1,
-          ),
-        ),
+        body: screens[_currentScreenIndex],
         bottomNavigationBar: BottomNavigationBar(
           onTap: _onTap,
+          currentIndex: _currentScreenIndex,
           items: const [
             BottomNavigationBarItem(
               icon: Icon(Icons.home),
@@ -33,6 +44,9 @@ class Home extends StatelessWidget {
   }
 
   void _onTap(int index) {
-    print('Tapped on item $index');
+    setState(() {
+      _currentScreenIndex = index;
+    });
+    print('Screen index : $_currentScreenIndex');
   }
 }
