@@ -1,22 +1,32 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'home_screen/home_screen.dart';
 import 'settings_screen/settings_screen.dart';
 
 class Home extends StatefulWidget {
-  const Home({super.key});
+  final String title;
+
+  final screens = [
+    const HomeScreen(),
+    const SettingsScreen(),
+  ];
+
+  Home({
+    super.key,
+    required this.title,
+  });
 
   @override
   State<Home> createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
-  final screens = [
-    const HomeScreen(),
-    const SettingsScreen(),
-  ];
-
   int _currentScreenIndex = 0;
+
+  List<Widget> get screens => widget.screens;
+
+  String get title => widget.title;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +34,7 @@ class _HomeState extends State<Home> {
         appBar: AppBar(
           leading: const Icon(Icons.arrow_back),
           centerTitle: true,
-          title: const Text('My First App'),
+          title: Text(title),
         ),
         body: screens[_currentScreenIndex],
         bottomNavigationBar: BottomNavigationBar(
@@ -47,6 +57,8 @@ class _HomeState extends State<Home> {
     setState(() {
       _currentScreenIndex = index;
     });
-    print('Screen index : $_currentScreenIndex');
+    if (kDebugMode) {
+      print('Screen index : $_currentScreenIndex');
+    }
   }
 }

@@ -16,7 +16,9 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: Home(),
+      home: Home(
+        title: 'My first app',
+      ),
     );
   }
 }
