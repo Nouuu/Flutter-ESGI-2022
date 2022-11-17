@@ -14,14 +14,6 @@ class _ButtonScreenState extends State<ButtonScreen> {
     Colors.blue,
     Colors.yellow,
     Colors.purple,
-    Colors.orange,
-    Colors.pink,
-    Colors.teal,
-    Colors.cyan,
-    Colors.lime,
-    Colors.indigo,
-    Colors.brown,
-    Colors.grey,
   ];
 
   int _colorIndex = 0;
