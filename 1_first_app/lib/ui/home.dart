@@ -1,3 +1,4 @@
+import 'package:first_app/ui/button_screen/button_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -10,6 +11,7 @@ class Home extends StatefulWidget {
   final screens = [
     const HomeScreen(),
     const SettingsScreen(),
+    const ButtonScreen(),
   ];
 
   Home({
@@ -48,6 +50,10 @@ class _HomeState extends State<Home> {
             BottomNavigationBarItem(
               icon: Icon(Icons.settings),
               label: 'Settings',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.radio_button_checked),
+              label: 'Button',
             ),
           ],
         ));
