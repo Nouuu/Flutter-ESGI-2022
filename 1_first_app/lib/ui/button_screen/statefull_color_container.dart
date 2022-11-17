@@ -25,8 +25,8 @@ class _StatefulColorContainerState extends State<StatefulColorContainer> {
     return GestureDetector(
       onTap: _onGestureTap,
       child: Container(
-        width: 160.0,
-        height: 160.0,
+        width: 100.0,
+        height: 100.0,
         decoration: BoxDecoration(
           color: colors[_colorIndex],
           border: Border.all(

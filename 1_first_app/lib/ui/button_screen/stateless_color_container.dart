@@ -9,13 +9,13 @@ class StatelessColorContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimatedContainer(
-      width: 160.0,
-      height: 160.0,
+      width: 100.0,
+      height: 100.0,
       decoration: BoxDecoration(
         color: color,
         border: Border.all(
-          color: color,
-          width: 5.0,
+          color: Colors.white,
+          width: 1,
         ),
         borderRadius: BorderRadius.circular(10),
       ),

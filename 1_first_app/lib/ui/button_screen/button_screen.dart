@@ -2,6 +2,8 @@ import 'package:first_app/ui/button_screen/statefull_color_container.dart';
 import 'package:first_app/ui/button_screen/stateless_color_container.dart';
 import 'package:flutter/material.dart';
 
+import 'clickable_container.dart';
+
 const List<Color> colors = [
   Colors.red,
   Colors.green,
@@ -19,6 +21,7 @@ class ButtonScreen extends StatefulWidget {
 
 class _ButtonScreenState extends State<ButtonScreen> {
   int _statelessContainerColorIndex = 0;
+  int _backgroundColorIndex = 0;
 
   void _onFloatingActionButtonPressed() {
     setState(() {
@@ -27,9 +30,16 @@ class _ButtonScreenState extends State<ButtonScreen> {
     });
   }
 
+  void _onClickableContainerPressed() {
+    setState(() {
+      _backgroundColorIndex = (_backgroundColorIndex + 1) % colors.length;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: colors[_backgroundColorIndex],
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -38,6 +48,8 @@ class _ButtonScreenState extends State<ButtonScreen> {
             const SizedBox(height: 80),
             StatelessColorContainer(
                 color: colors[_statelessContainerColorIndex]),
+            const SizedBox(height: 80),
+            ClickableContainer(onPressed: _onClickableContainerPressed),
           ],
         ),
       ),
