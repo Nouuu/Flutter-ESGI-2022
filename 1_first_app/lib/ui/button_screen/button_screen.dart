@@ -1,4 +1,14 @@
+import 'package:first_app/ui/button_screen/statefull_color_container.dart';
+import 'package:first_app/ui/button_screen/stateless_color_container.dart';
 import 'package:flutter/material.dart';
+
+const List<Color> colors = [
+  Colors.red,
+  Colors.green,
+  Colors.blue,
+  Colors.yellow,
+  Colors.purple,
+];
 
 class ButtonScreen extends StatefulWidget {
   const ButtonScreen({super.key});
@@ -8,41 +18,32 @@ class ButtonScreen extends StatefulWidget {
 }
 
 class _ButtonScreenState extends State<ButtonScreen> {
-  static const List<Color> _colors = [
-    Colors.red,
-    Colors.green,
-    Colors.blue,
-    Colors.yellow,
-    Colors.purple,
-  ];
+  int _statelessContainerColorIndex = 0;
 
-  int _colorIndex = 0;
-  int _borderColorIndex = (_colors.length / 2).ceil();
-
-  void _onTap() {
+  void _onFloatingActionButtonPressed() {
     setState(() {
-      _colorIndex = (_colorIndex + 1) % _colors.length;
-      _borderColorIndex = (_borderColorIndex + 1) % _colors.length;
+      _statelessContainerColorIndex =
+          (_statelessContainerColorIndex + 1) % colors.length;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: GestureDetector(
-        onTap: _onTap,
-        child: Container(
-          width: 160.0,
-          height: 160.0,
-          decoration: BoxDecoration(
-            color: _colors[_colorIndex],
-            border: Border.all(
-              color: _colors[_borderColorIndex],
-              width: 5.0,
-            ),
-            borderRadius: BorderRadius.circular(10),
-          ),
+    return Scaffold(
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const StatefulColorContainer(),
+            const SizedBox(height: 80),
+            StatelessColorContainer(
+                color: colors[_statelessContainerColorIndex]),
+          ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _onFloatingActionButtonPressed,
+        child: const Icon(Icons.color_lens_outlined),
       ),
     );
   }
