@@ -8,7 +8,7 @@ class StatelessColorContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return AnimatedContainer(
       width: 160.0,
       height: 160.0,
       decoration: BoxDecoration(
@@ -19,6 +19,7 @@ class StatelessColorContainer extends StatelessWidget {
         ),
         borderRadius: BorderRadius.circular(10),
       ),
+      duration: const Duration(milliseconds: 500),
     );
   }
 }
